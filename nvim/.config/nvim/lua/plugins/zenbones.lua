@@ -46,5 +46,6 @@ return {
 		h(0, "VertSplit", { fg = accent, bg = bg })
 		h(0, "BufferCurrentMod", { fg = "#6b5a4e", bg = accent })
 		h(0, "BufferInactiveMod", { fg = "#6b5a4e", bg = bg })
+		h(0, "iCursor", { fg = "#000000", bg = "#ffffff" })
 	end,
 }
