@@ -1,7 +1,7 @@
 // Layout configuration
 layout {
     // Gaps around windows in logical pixels
-    gaps 3
+    gaps 10
     background-color "transparent"
     // When to center focused column: "never", "always", "on-overflow"
     center-focused-column "never"
