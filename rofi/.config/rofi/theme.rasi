@@ -1,5 +1,5 @@
 * {
-    bg:                  #000000;
+    bg:                  #111111;
     bg-selected:         #181616;
     fg:                  #c5c9c5;
     accent:              #7e9cd8;

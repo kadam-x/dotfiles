@@ -11,7 +11,7 @@ binds {
     Mod+B { spawn "librewolf"; }
     Mod+E { spawn "kitty" "--class" "yazi" "-e" "yazi"; }
     Mod+Escape { spawn-sh "~/.config/rofi/scripts/power-menu-niri.sh"; }
-    Mod+N { spawn-sh "~/.config/rofi/scripts/note-obsidian"; }
+    Mod+N { spawn-sh "~/.config/rofi/scripts/note"; }
     Mod+P { spawn-sh "~/.config/rofi/scripts/project-picker"; }
     Mod+M { spawn-sh "~/.config/niri/scripts/yt-music.sh"; }
     // Screen reader toggle
