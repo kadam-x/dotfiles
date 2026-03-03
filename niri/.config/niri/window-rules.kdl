@@ -6,7 +6,6 @@ prefer-no-csd
 workspace "b"
 workspace "d"
 workspace "m"
-workspace "n"
 workspace "c"
 workspace "v"
 
@@ -64,13 +63,6 @@ window-rule {
     open-floating true
     default-column-width { fixed 1200; }
     default-window-height { fixed 1000; }
-}
-
-window-rule {
-    match app-id=r#"obsidian$"#
-    open-maximized true
-    open-on-workspace "n"
-
 }
 
 window-rule {
