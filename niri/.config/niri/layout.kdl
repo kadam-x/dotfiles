@@ -1,9 +1,8 @@
 // Layout configuration
 layout {
     // Gaps around windows in logical pixels
-    gaps 10
+    gaps 15
     background-color "transparent"
-    // When to center focused column: "never", "always", "on-overflow"
     center-focused-column "never"
 
     // Preset column widths for Mod+R cycling

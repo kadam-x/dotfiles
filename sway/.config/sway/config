@@ -10,15 +10,12 @@ set $menu        rofi -show drun -theme-str 'window {width: 25%;}'
 set $browser     librewolf
 
 # --- Workspaces ---
-set $ws1  "1:brow"
-set $ws2  "2:brow2"
-set $ws3  "3:dev1"
-set $ws4  "4:dev2"
-set $ws5  "5:vlc"
-set $ws6  "6:note"
-set $ws7  "7:comm"
-set $ws8  "8:datb"
-set $ws10 "10:music"
+# set $ws1  "1"
+# set $ws2  "2"
+# set $ws3  "3"
+# set $ws4  "4"
+# set $ws5  "5"
+# set $ws6  "6"
 
 # --- Appearance & Gaps ---
 default_border          pixel 2
@@ -26,15 +23,14 @@ default_floating_border pixel 2
 gaps inner              5
 gaps outer              8
 smart_gaps              off
-smart_borders           off
+smart_borders           on
 
 # --- Theme Colors ---
 # target                border   backgr.  text     indicator child_border
-client.focused          #bb9af7  #24283b  #c0caf5  #bb9af7   #bb9af7
+client.focused          #727169  #24283b  #c0caf5  #727169   #727169
 client.focused_inactive #414868  #24283b  #787c99  #414868   #414868
 client.unfocused        #24283b  #24283b  #787c99  #24283b   #24283b
 client.urgent           #f7768e  #24283b  #ffffff  #f7768e   #f7768e
-
 # --- Input ---
 input "type:keyboard" {
     xkb_layout us,hu
@@ -50,11 +46,6 @@ input "type:touchpad" {
 
 # --- Output ---
 output DP-1 resolution 2560x1440@240Hz position 0,0
-
-# --- Window Assignments ---
-assign [app_id="kitty-notes"] workspace $ws6
-assign [app_id="vlc"]         workspace $ws5
-assign [app_id="qtws"]        workspace $ws10
 
 # --- Window Rules: Floating & Sizing ---
 for_window [app_id="jome"]                                                          floating enable, resize set 600 400,  move position center
@@ -81,8 +72,10 @@ exec_always {
     gsettings set org.gnome.desktop.interface gtk-theme     Adwaita-dark
     gsettings set org.gnome.desktop.interface color-scheme  prefer-dark
     gsettings set org.gnome.desktop.interface cursor-size   28
-    swaybg -m fill -i ~/Pictures/glassdune.jpg
-}
+    swaybg -m fill -i ~/Pictures/wallpapers/monochrome-wave.jpg
+    }
+
+exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 
 # --- Autostart: Daemons & Apps ---
 exec {

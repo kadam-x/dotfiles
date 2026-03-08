@@ -1,19 +1,17 @@
-# Add these sections to your default yazi.toml
-# Only including the safe, commonly-used settings from your old config
 [mgr]
-ratio          = [ 1, 4, 3 ]           # Your custom pane ratios
+ratio          = [ 1, 4, 3 ]           
 sort_by        = "alphabetical"
 sort_sensitive = false
 sort_reverse   = false
 sort_dir_first = true
-show_hidden    = true                   # Show hidden files
+show_hidden    = true                   
 show_symlink   = true
-scrolloff      = 5                      # Keep 5 lines visible when scrolling
+scrolloff      = 5                     
 title_format   = "Yazi: {cwd}"
 
 [preview]
 tab_size        = 2
-max_width       = 600                   # Your custom preview sizes
+max_width       = 600                  
 max_height      = 900
 image_quality   = 75
 
@@ -28,7 +26,9 @@ play = [
   # { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
   { run = 'vlc "$@"', orphan = true, for = "unix" },
 ]
-
+pdf = [
+  { run = 'zathura "$@"', orphan = true, for = "unix" },
+]
 [open]
 rules = [
   { name = "*/", use = [ "edit", "open", "reveal" ] },
@@ -37,6 +37,7 @@ rules = [
   { mime = "{audio,video}/*", use = [ "play", "reveal" ] },
   { mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
   { mime = "*/javascript", use = [ "edit", "reveal" ] },
+  { mime = "application/pdf", use = [ "pdf", "reveal" ] },
   { name = "*", use = [ "open", "reveal" ] },
 ]
 

@@ -10,8 +10,8 @@ vim.keymap.set("n", "x", "V", { desc = "Select line (Helix style)" })
 
 -- Visual mode: Extend the selection down one line
 vim.keymap.set("v", "x", "j", { desc = "Extend selection (Helix)" })
-vim.keymap.set({ "n", "v" }, "gh", "^", { desc = "Start of line (Helix)", nowait = true })
-vim.keymap.set({ "n", "v" }, "gl", "$", { desc = "End of line (Helix)", nowait = true })
+-- vim.keymap.set({ "n", "v" }, "gh", "^", { desc = "Start of line (Helix)", nowait = true })
+-- vim.keymap.set({ "n", "v" }, "gl", "$", { desc = "End of line (Helix)", nowait = true })
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual selection" })
