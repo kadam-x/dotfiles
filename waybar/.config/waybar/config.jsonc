@@ -12,7 +12,8 @@
    "sway/workspaces"
   ],
   "modules-center": [
-    "niri/window"
+    "niri/window",
+    "sway/window"
   ],
   "modules-right": [
     "tray",

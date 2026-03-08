@@ -31,8 +31,9 @@
 "disk usage" = ""
 ".pdf" = ""
 "kitty-notes" = ""
-
+"yazi" = "󰇥"
+"tmux" = ""
 [other]
 fallback_icon = ""
-deduplicate_icons = true
+deduplicate_icons = false
 separator = ": "
