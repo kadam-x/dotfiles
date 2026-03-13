@@ -94,7 +94,7 @@
     "format-muted": "󰝟",
     "scroll-step": 1,
     "tooltip": false,
-    "on-click": "kitty --class wiremix wiremix"
+    "on-click": "kitty --class wiremix pulsemixer"
   },
   "clock": {
     "format": "{:%a %d %b  %H:%M:%S}",

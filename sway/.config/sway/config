@@ -18,8 +18,8 @@ set $browser     librewolf
 # set $ws6  "6"
 
 # --- Appearance & Gaps ---
-default_border          pixel 2
-default_floating_border pixel 2
+default_border          pixel 3
+default_floating_border pixel 3
 gaps inner              5
 gaps outer              8
 smart_gaps              off
@@ -57,7 +57,7 @@ for_window [app_id="btop"]                                                      
 # for_window [app_id="xdg-desktop-portal-gtk" title="(?i)(save|open|all files|select)"] floating enable, resize set 800 600,  move position center
 for_window [app_id="swayimg"] floating enabled
 # --- Window Rules: Focus on Launch ---
-for_window [app_id="kitty-notes"] focus
+for_window [app_id="kitty-notes"] floating enable, resize set 1000 800, move position center
 for_window [app_id="vlc"]         focus
 for_window [app_id="qtws"]        focus
 
@@ -75,7 +75,7 @@ exec_always {
     swaybg -m fill -i ~/Pictures/wallpapers/monochrome-wave.jpg
     }
 
-exec_always --no-startup-id workstyle &> /tmp/workstyle.log
+exec_always workstyle &> /tmp/workstyle.log
 
 # --- Autostart: Daemons & Apps ---
 exec {
