@@ -17,7 +17,7 @@ case "$choice_clean" in
         kitty --class kitty-notes -e bash -c "
             cd '$VAULT_DIR' && \
             selected=\$(find . -type f -name '*.md' | \
-                fzf --preview 'bat --style=numbers --color=always {}' \
+                fzf --preview 'bat --theme base16 --style=numbers --color=always {}' \
                     --preview-window=right:60% \
                     --height=100%) && \
             [ -n \"\$selected\" ] && nvim \"\$selected\"

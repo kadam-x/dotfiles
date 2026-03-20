@@ -9,7 +9,6 @@ return {
 			["<S-Tab>"] = { "select_prev", "fallback" },
 			["<CR>"] = { "accept", "fallback" },
 			["<Esc>"] = { "hide", "fallback" },
-			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 		},
 		completion = {
 			list = { selection = { preselect = true, auto_insert = true } },

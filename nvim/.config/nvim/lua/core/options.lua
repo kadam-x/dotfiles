@@ -90,3 +90,33 @@ vim.opt.splitbelow = true
 vim.opt.updatetime = 50
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.mouse = "a"
+
+-- prettier hints
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+	opts = opts or {}
+	opts.border = opts.border or "rounded"
+	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
+-- nicer diagnostics
+-- vim.diagnostic.config({
+-- 	virtual_text = {
+-- 		prefix = "●", -- or "■", "▎", "»"
+-- 		spacing = 4,
+-- 	},
+-- 	float = {
+-- 		border = "rounded",
+-- 		source = true, -- shows "eslint: ..." etc.
+-- 	},
+-- 	signs = true,
+-- 	underline = true,
+-- 	update_in_insert = false, -- less noisy while typing
+-- 	severity_sort = true,
+-- })
+--
+-- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+-- for type, icon in pairs(signs) do
+-- 	local hl = "DiagnosticSign" .. type
+-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+-- end

@@ -50,10 +50,11 @@ c.statusbar.show = "in-mode"
 
 c.content.cookies.accept = "no-3rdparty"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
-c.content.canvas_reading = False
-c.content.headers.do_not_track = True
+c.content.canvas_reading = True
+c.content.headers.do_not_track = False
 c.content.headers.referer = "same-domain"
 c.content.headers.custom = {"Accept-Language": "en-US,en;q=0.9"}
+c.completion.height = "25%"
 
 # ── Ad Blocking ──────────────────────────────────────────────
 # Tip: pip install adblock  →  unlocks Brave's adblock engine
@@ -79,13 +80,10 @@ c.url.start_pages = ["https://www.google.com"]
 c.url.searchengines = {
     "DEFAULT": "https://www.google.com/search?q={}",
     "!g": "https://www.google.com/search?q={}",
-    "!d": "https://duckduckgo.com/?q={}",
     "!gh": "https://github.com/search?q={}",
-    "!w": "https://en.wikipedia.org/wiki/{}",
     "!yt": "https://www.youtube.com/results?search_query={}",
     "!r": "https://www.reddit.com/search/?q={}",
     "!maps": "https://www.google.com/maps/search/{}",
-    "!img": "https://www.google.com/search?tbm=isch&q={}",
 }
 
 # ── Tabs ─────────────────────────────────────────────────────
@@ -123,6 +121,10 @@ c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = "smart"
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.bg = bg
+
+# ── Per-site dark mode overrides ─────────────────────────────
+config.set("colors.webpage.darkmode.enabled", False, "https://www.youtube.com/*")
+config.set("colors.webpage.darkmode.enabled", False, "https://music.youtube.com/*")
 
 # ── Tab colours ──────────────────────────────────────────────
 # Active:   beige bg (#9b8d7f) + black text  ← inverted as requested
@@ -264,21 +266,19 @@ config.bind("pp", "open -- {clipboard}")
 config.bind("pP", "open -t -- {clipboard}")
 
 # Yank
-config.bind("yy", "yank")
-config.bind("yY", "yank selection")
+config.bind("yY", "yank")
 
 # Config shortcuts
 config.bind(",c", "config-edit")
 config.bind(",r", "config-source")
 
-# Passthrough mode (for web apps that eat keypresses)
-config.bind("<Ctrl-e>", "enter-mode passthrough")
-
 # Mute / zoom
 config.bind("M", "tab-mute")
 config.bind("+", "zoom-in")
 config.bind("_", "zoom-out")
-config.bind(",0", "zoom")
 
-# Quickmarks — add your own here
-config.bind(",gh", "open https://github.com")
+# search with
+config.bind(",gh", "cmd-set-text :open -t !gh  ")
+config.bind(",yt", "cmd-set-text :open -t !yt  ")
+config.bind(",rd", "cmd-set-text :open -t !r  ")
+config.bind(",mp", "cmd-set-text :open -t !maps  ")
