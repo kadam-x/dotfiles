@@ -27,4 +27,4 @@ configuration{
     kb-move-char-forward: "Control+f";
     kb-mode-complete: "Control+o";
 }
-@theme "theme.rasi"
+@theme "tokyo-night-cyber.rasi"

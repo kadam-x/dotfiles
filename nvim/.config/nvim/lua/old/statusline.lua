@@ -6,6 +6,7 @@ local function git_info()
 	if branch == "" then
 		return ""
 	end
+
 	local status = vim.fn.system("git -C " .. cwd .. " status --porcelain 2>/dev/null")
 	local added, modified, deleted = 0, 0, 0
 	for line in status:gmatch("[^\n]+") do
@@ -23,6 +24,7 @@ local function git_info()
 			deleted = deleted + 1
 		end
 	end
+
 	local parts = { branch }
 	if added > 0 then
 		table.insert(parts, "+" .. added)
@@ -33,34 +35,29 @@ local function git_info()
 	if deleted > 0 then
 		table.insert(parts, "-" .. deleted)
 	end
+
 	return table.concat(parts, " ")
 end
 
 local function statusline()
 	local mode_map = {
-		n = { "NORMAL", "#0D1116", "#987afb" },
-		i = { "INSERT", "#0D1116", "#37f499" },
-		v = { "VISUAL", "#0D1116", "#fca6ff" },
-		V = { "V-LINE", "#0D1116", "#fca6ff" },
-		["\22"] = { "V-BLOCK", "#0D1116", "#fca6ff" },
-		c = { "COMMAND", "#0D1116", "#e58f2a" },
-		R = { "REPLACE", "#0D1116", "#04d1f9" },
-		t = { "TERMINAL", "#0D1116", "#9ad900" },
-		s = { "SELECT", "#0D1116", "#fca6ff" },
-		S = { "SEL-LINE", "#0D1116", "#fca6ff" },
+		n = { "NORMAL", "#888888", "#111111" },
+		i = { "INSERT", "#111111", "#9c8d7e" },
+		v = { "VISUAL", "#111111", "#888888" },
+		V = { "V-LINE", "#111111", "#888888" },
+		["\22"] = { "V-BLOCK", "#111111", "#888888" },
+		c = { "COMMAND", "#111111", "#888888" },
+		R = { "REPLACE", "#111111", "#888888" },
+		t = { "TERMINAL", "#111111", "#888888" },
+		s = { "SELECT", "#111111", "#888888" },
+		S = { "SEL-LINE", "#111111", "#888888" },
 	}
-
-	local m = mode_map[vim.fn.mode()] or { vim.fn.mode(), "#0D1116", "#b7bfce" }
+	local m = mode_map[vim.fn.mode()] or { vim.fn.mode(), "#111111", "#888888" }
 	local mode_label, mode_fg, mode_bg = m[1], m[2], m[3]
 
 	vim.api.nvim_set_hl(0, "StatuslineMode", { fg = mode_fg, bg = mode_bg, bold = true })
-	vim.api.nvim_set_hl(0, "StatuslineBase", { fg = "#b7bfce", bg = "#141b22" })
-	vim.api.nvim_set_hl(0, "StatuslineGit", { fg = "#37f499", bg = "#141b22" })
-	vim.api.nvim_set_hl(0, "StatuslineFile", { fg = "#ffffff", bg = "#141b22" })
-	vim.api.nvim_set_hl(0, "StatuslineModified", { fg = "#e58f2a", bg = "#141b22" })
-	vim.api.nvim_set_hl(0, "StatuslineRight", { fg = "#04d1f9", bg = "#232e3b" })
-	vim.api.nvim_set_hl(0, "StatuslineFT", { fg = "#987afb", bg = "#232e3b" })
-	vim.api.nvim_set_hl(0, "StatuslinePos", { fg = "#0D1116", bg = "#04d1f9", bold = true })
+	vim.api.nvim_set_hl(0, "StatuslineBase", { fg = "#888888", bg = "#111111" })
+	vim.api.nvim_set_hl(0, "StatuslineGit", { fg = "#9c8d7e", bg = "#111111" })
 
 	local bufcount = #vim.fn.getbufinfo({ buflisted = 1 })
 	local filetype = vim.bo.filetype ~= "" and vim.bo.filetype or ""
@@ -75,14 +72,12 @@ local function statusline()
 		" ",
 		git ~= "" and ("%#StatuslineGit# " .. git .. " ") or "",
 		"%#StatuslineBase# ",
-		"%#StatuslineFile#",
 		filename,
-		"%#StatuslineModified#",
 		modified,
-		"%#StatuslineBase# %=",
-		filetype ~= "" and ("%#StatuslineFT# " .. filetype .. " ") or "",
-		"%#StatuslineRight# Bufs:" .. bufcount .. " ",
-		"%#StatuslinePos# ",
+		" ",
+		"%=",
+		filetype ~= "" and (filetype .. " ") or "",
+		string.format("Bufs:%d ", bufcount),
 		location,
 		" ",
 	})
@@ -90,4 +85,6 @@ end
 
 vim.opt.statusline = "%!v:lua.require('statusline').get()"
 
-return { get = statusline }
+return {
+	get = statusline,
+}

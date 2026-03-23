@@ -1,39 +1,32 @@
-# ============================================================
-#  qutebrowser config.py
-#  Theme: base16 Black Metal (custom)
-#  Focus: Vim keys · Privacy · Clean UI · Google search
-# ============================================================
-# Drop into: ~/.config/qutebrowser/config.py
-# Reload:    :config-source
-# ============================================================
-
 config.load_autoconfig(False)
 
 # ── Palette ──────────────────────────────────────────────────
-# Mapped from your base16 setup:
-#   base00 #000000  bg (darkest)
-#   base01 #121212  bg alt / tab bar
-#   base02 #222222  selection bg / line nr bg
-#   base03 #333333  subtle borders
-#   base04 #999999  muted fg
-#   base05 #c1c1c1  main fg
-#   base08 #5f8787  teal accent (URLs, hints)
-#   base0A #8c7f70  warm tan
-#   base0B #9b8d7f  beige — active tab / selection
-#   err    #912222  your DiagnosticVirtualTextError
 
-bg = "#000000"
-bg_alt = "#121212"
-bg_sel = "#222222"
-border = "#333333"
-fg_muted = "#999999"
-fg_main = "#c1c1c1"
-fg_dim = "#888888"
-fg_sub = "#444444"
-accent = "#9b8d7f"  # beige — active tab bg / selection
-accent2 = "#8c7f70"  # warm tan
-teal = "#5f8787"  # hints / URLs
-err = "#912222"
+# bg      = "#000000"
+# bg_alt  = "#121212"
+# bg_sel  = "#222222"
+# border  = "#333333"
+# fg_muted = "#999999"
+# fg_main = "#c1c1c1"
+# fg_dim  = "#888888"
+# fg_sub  = "#444444"
+# accent  = "#9b8d7f"
+# accent2 = "#8c7f70"
+# teal    = "#5f8787"
+# err     = "#912222"
+
+bg = "#0D1116"
+bg_alt = "#141b22"
+bg_sel = "#232e3b"
+border = "#232e3b"
+fg_muted = "#b7bfce"
+fg_main = "#ffffff"
+fg_dim = "#b7bfce"
+fg_sub = "#232e3b"
+accent = "#987afb"
+accent2 = "#04d1f9"
+teal = "#37f499"
+err = "#f16c75"
 
 # ── General ──────────────────────────────────────────────────
 
@@ -46,6 +39,7 @@ c.content.javascript.clipboard = "none"
 c.scrolling.smooth = True
 c.zoom.default = "100%"
 c.statusbar.show = "in-mode"
+
 # ── Privacy ──────────────────────────────────────────────────
 
 c.content.cookies.accept = "no-3rdparty"
@@ -57,7 +51,6 @@ c.content.headers.custom = {"Accept-Language": "en-US,en;q=0.9"}
 c.completion.height = "25%"
 
 # ── Ad Blocking ──────────────────────────────────────────────
-# Tip: pip install adblock  →  unlocks Brave's adblock engine
 
 c.content.blocking.enabled = True
 c.content.blocking.method = "both"
@@ -115,21 +108,17 @@ c.fonts.tabs.selected = f"{sz} {ff}"
 c.fonts.tabs.unselected = f"{sz} {ff}"
 c.fonts.hints = f"bold {sz} {ff}"
 
-# ── Dark mode for web pages ──────────────────────────────────
+# ── Dark mode ────────────────────────────────────────────────
 
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = "smart"
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.bg = bg
 
-# ── Per-site dark mode overrides ─────────────────────────────
 config.set("colors.webpage.darkmode.enabled", False, "https://www.youtube.com/*")
 config.set("colors.webpage.darkmode.enabled", False, "https://music.youtube.com/*")
 
-# ── Tab colours ──────────────────────────────────────────────
-# Active:   beige bg (#9b8d7f) + black text  ← inverted as requested
-# Inactive: #121212 bg + muted grey text
-# Note: qutebrowser only exposes odd/even variants, no bare selected/unselected
+# ── Tabs ─────────────────────────────────────────────────────
 
 c.colors.tabs.bar.bg = bg_alt
 
@@ -156,7 +145,7 @@ c.colors.tabs.indicator.start = teal
 c.colors.tabs.indicator.stop = accent
 c.colors.tabs.indicator.error = err
 
-# ── Completion dropdown ───────────────────────────────────────
+# ── Completion ───────────────────────────────────────────────
 
 c.colors.completion.fg = fg_main
 c.colors.completion.odd.bg = bg
@@ -174,14 +163,14 @@ c.colors.completion.match.fg = accent
 c.colors.completion.scrollbar.fg = fg_sub
 c.colors.completion.scrollbar.bg = bg
 
-# ── Status bar colours ───────────────────────────────────────
+# ── Status bar ───────────────────────────────────────────────
 
 c.colors.statusbar.normal.bg = bg
 c.colors.statusbar.normal.fg = fg_muted
 c.colors.statusbar.insert.bg = bg
-c.colors.statusbar.insert.fg = accent
+c.colors.statusbar.insert.fg = teal
 c.colors.statusbar.passthrough.bg = bg
-c.colors.statusbar.passthrough.fg = teal
+c.colors.statusbar.passthrough.fg = accent2
 c.colors.statusbar.command.bg = bg
 c.colors.statusbar.command.fg = fg_main
 c.colors.statusbar.caret.bg = bg
@@ -247,7 +236,6 @@ c.colors.contextmenu.disabled.fg = fg_sub
 
 # ── Keybindings ──────────────────────────────────────────────
 
-# Tab navigation (feels like vim buffers)
 config.bind("J", "tab-prev")
 config.bind("K", "tab-next")
 config.bind("H", "back")
@@ -255,30 +243,23 @@ config.bind("L", "forward")
 config.bind("gT", "tab-prev")
 config.bind("gt", "tab-next")
 
-# Tab management
 config.bind("X", "tab-close")
-config.bind("u", "undo")  # reopen closed tab
+config.bind("u", "undo")
 config.bind("<Ctrl-t>", "open -t")
 config.bind("<Ctrl-w>", "tab-close")
 
-# Paste URL from clipboard
 config.bind("pp", "open -- {clipboard}")
 config.bind("pP", "open -t -- {clipboard}")
 
-# Yank
 config.bind("yY", "yank")
 
-# Config shortcuts
 config.bind(",c", "config-edit")
 config.bind(",r", "config-source")
 
-# Mute / zoom
 config.bind("M", "tab-mute")
 config.bind("+", "zoom-in")
 config.bind("_", "zoom-out")
 
-# search with
 config.bind(",gh", "cmd-set-text :open -t !gh  ")
 config.bind(",yt", "cmd-set-text :open -t !yt  ")
-config.bind(",rd", "cmd-set-text :open -t !r  ")
 config.bind(",mp", "cmd-set-text :open -t !maps  ")

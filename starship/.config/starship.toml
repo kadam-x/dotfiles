@@ -1,6 +1,6 @@
 "$schema" = "https://starship.rs/config-schema.json"
 add_newline = false
-palette = "kanagawa_dragon"
+palette = "toky-night-cyber"
 
 format = """
 $directory$git_branch$git_status
@@ -51,8 +51,8 @@ style = "bold fg"
 style = "bold fg"
 untracked = ""
 modified = "[!$count](bold yellow)"
-staged = "[+$count](bold gray)"
-renamed = "[»$count](bold gray)"
+staged = "[+$count](bold green)"
+renamed = "[»$count](bold purple)"
 deleted = "[✘$count](bold red)"
 ahead = "[⇡$count](bold fg)"
 behind = "[⇣$count](bold fg)"
@@ -68,7 +68,7 @@ min_time = 2000
 format = "[$duration]($style) "
 style = "bold gray"
 
-[palettes.kanagawa_dragon]
+[palettes.base16-dmg]
 bg     = "#181616"
 fg     = "#c5c9c5"
 red    = "#c34043"
@@ -79,3 +79,15 @@ purple = "#957fb8"
 aqua   = "#6a9589"
 gray   = "#727169" 
 orange = "#ffa066"
+
+[palettes.toky-night-cyber]
+bg     = "#0D1116"
+fg     = "#b7bfce"
+red    = "#f16c75"
+green  = "#37f499"
+yellow = "#f1fc79"
+blue   = "#987afb"
+purple = "#f94dff"
+aqua   = "#04d1f9"
+gray   = "#232e3b"
+orange = "#e58f2a"
