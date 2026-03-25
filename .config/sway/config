@@ -27,7 +27,7 @@ smart_borders           on
 
 # --- Theme Colors ---
 # target                border   backgr.  text     indicator child_border
-client.focused          #727169  #24283b  #c0caf5  #727169   #727169
+client.focused          #999999  #24283b  #c0caf5  #999999   #999999
 client.focused_inactive #414868  #24283b  #787c99  #414868   #414868
 client.unfocused        #24283b  #24283b  #787c99  #24283b   #24283b
 client.urgent           #f7768e  #24283b  #ffffff  #f7768e   #f7768e
