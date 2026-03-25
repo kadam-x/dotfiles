@@ -1,0 +1,92 @@
+# ============================================================================
+# SWAY MAIN CONFIGURATION
+# ============================================================================
+
+# --- Variables ---
+set $mod         Mod4
+set $terminal    kitty
+set $fileManager kitty --class yazi -e yazi
+set $menu        rofi -show drun -theme-str 'window {width: 25%;}'
+set $browser     librewolf
+
+# --- Workspaces ---
+# set $ws1  "1"
+# set $ws2  "2"
+# set $ws3  "3"
+# set $ws4  "4"
+# set $ws5  "5"
+# set $ws6  "6"
+
+# --- Appearance & Gaps ---
+default_border          pixel 3
+default_floating_border pixel 3
+gaps inner              5
+gaps outer              8
+smart_gaps              off
+smart_borders           on
+
+# --- Theme Colors ---
+# target                border   backgr.  text     indicator child_border
+client.focused          #727169  #24283b  #c0caf5  #727169   #727169
+client.focused_inactive #414868  #24283b  #787c99  #414868   #414868
+client.unfocused        #24283b  #24283b  #787c99  #24283b   #24283b
+client.urgent           #f7768e  #24283b  #ffffff  #f7768e   #f7768e
+# --- Input ---
+input "type:keyboard" {
+    xkb_layout us,hu
+    xkb_options "grp:win_space_toggle"
+}
+input "type:pointer" {
+    accel_profile flat
+}
+input "type:touchpad" {
+    natural_scroll enabled
+    tap enabled
+}
+
+# --- Output ---
+output DP-1 resolution 2560x1440@240Hz position 0,0
+
+# --- Window Rules: Floating & Sizing ---
+for_window [app_id="jome"]                                                          floating enable, resize set 600 400,  move position center
+for_window [app_id="wiremix"]                                                       floating enable, resize set 800 600,  move position center
+for_window [app_id="yazi"]                                                          floating enable, resize set 1000 800, move position center
+for_window [app_id="org.qbittorrent.qBittorrent"]                                   floating enable, resize set 800 600,  move position center
+for_window [app_id="ncdu"]                                                          floating enable, resize set 1000 800, move position center
+for_window [app_id="btop"]                                                          floating enable, resize set 1000 800, move position center
+# for_window [app_id="xdg-desktop-portal-gtk" title="(?i)(save|open|all files|select)"] floating enable, resize set 800 600,  move position center
+for_window [app_id="swayimg"] floating enabled
+# --- Window Rules: Focus on Launch ---
+for_window [app_id="kitty-notes"] floating enable, resize set 1000 800, move position center
+for_window [app_id="vlc"]         focus
+for_window [app_id="qtws"]        focus
+
+# --- Autostart: Environment & Theme ---
+exec_always {
+    dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+    gsettings set org.gnome.desktop.interface cursor-theme  Bibata-Modern-Classic
+    gsettings set org.gnome.desktop.interface icon-theme    retrosmart
+    gsettings set org.gnome.desktop.interface gtk-theme     Adwaita-dark
+    gsettings set org.gnome.desktop.interface color-scheme  prefer-dark
+    gsettings set org.gnome.desktop.interface cursor-size   28
+    swaybg -m fill -i ~/Pictures/wallpapers/monochrome-wave.jpg
+    }
+
+exec_always workstyle &> /tmp/workstyle.log
+
+# --- Autostart: Daemons & Apps ---
+exec {
+    /usr/lib/polkit-kde-authentication-agent-1
+    waybar
+    dunst
+    swww-daemon
+    wl-paste --type text  --watch cliphist store
+    wl-paste --type image --watch cliphist store
+    qbittorrent --no-splash
+}
+
+# --- Includes ---
+include ~/.config/sway/keybinds.conf
+
+# --- Misc ---
+floating_modifier $mod normal

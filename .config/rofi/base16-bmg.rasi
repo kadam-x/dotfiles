@@ -1,0 +1,52 @@
+* {
+    bg:                  #111111;
+    bg-selected:         #181616;
+    fg:                  #c5c9c5;
+    accent:              #7e9cd8;
+    border-strong:       #9c8d7e;
+    border-subtle:       #727169;
+    background-color:    transparent;
+    text-color:          @fg;
+    font:                "Iosevka Term";
+}
+window {
+    background-color:    @bg;
+    border:              3px;
+    border-color:        @border-strong;
+    border-radius:       0px;
+    width:               600px;
+    padding:             0;
+}
+mainbox {
+    children:            [ inputbar, listview ];
+}
+inputbar {
+    background-color:    @bg;
+    children:            [ prompt, entry ];
+    padding:             10px;
+    border:              0px 0px 2px 0px;
+    border-color:        @border-strong;
+}
+prompt {
+    padding:             0px 10px 0px 0px;
+    text-color:          @accent;
+}
+entry {
+    text-color:          @fg;
+}
+listview {
+    lines:               15;
+    columns:             2;
+    fixed-height:        false;
+}
+element {
+    padding:             6px 12px;
+    border-radius:       4px;
+}
+element selected {
+    background-color:    @bg-selected;
+    text-color:          #9c8d7e;
+}
+element-text {
+    text-color:          inherit;
+}

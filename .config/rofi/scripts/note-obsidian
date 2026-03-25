@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+VAULT_DIR="$HOME/notes"
+mkdir -p "$VAULT_DIR"
+
+options="open vault
+create note"
+
+choice=$(echo -e "$options" | rofi -dmenu -i -p "" -theme-str 'window {width: 10%;} listview {lines: 2; columns: 1;} element selected {background-color: #2a2a38; text-color: #c5c9c5;} inputbar {enabled: false;}')
+choice_clean=$(echo "$choice" | xargs)
+
+open_in_obsidian() {
+    local file="$1"
+    local rel_path="${file#$VAULT_DIR/}"
+    local encoded
+    encoded=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$rel_path'))")
+    obsidian "obsidian://open?vault=$(basename "$VAULT_DIR")&file=$encoded" &
+}
+
+case "$choice_clean" in
+    "open vault")
+        obsidian "obsidian://open?vault=$(basename "$VAULT_DIR")" &
+        ;;
+    "create note")
+        note_name=$(rofi -dmenu -p "Note name (blank for timestamp)" -theme-str 'window {width: 25%;} listview {enabled: false;}')
+        rofi_exit=$?
+        if [ $rofi_exit -ne 0 ]; then
+            exit 0
+        fi
+        if [ -z "$note_name" ]; then
+            timestamp=$(date +%Y-%m-%d-%H%M)
+            note_file="$VAULT_DIR/$timestamp.md"
+        else
+            safe_name=$(echo "$note_name" | tr ' ' '-' | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]//g')
+            note_file="$VAULT_DIR/$safe_name.md"
+        fi
+        if [ ! -f "$note_file" ]; then
+            {
+                echo "# $(basename "$note_file" .md)"
+                echo ""
+                echo "tags: "
+                echo ""
+                echo "## Overview"
+                echo ""
+            } > "$note_file"
+        fi
+        open_in_obsidian "$note_file"
+        ;;
+esac

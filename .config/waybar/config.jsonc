@@ -1,0 +1,103 @@
+{ 
+  "reload_style_on_change": true,
+  "layer": "top",
+  "custom/separator": {
+    "format": "::",
+    "interval": "once",
+    "tooltip": false
+  },
+  "modules-left": [
+   "custom/oslogo",
+   "niri/workspaces",
+   "sway/workspaces"
+  ],
+  "modules-center": [
+    "niri/window",
+    "sway/window"
+  ],
+  "modules-right": [
+    "tray",
+    "disk",
+    "custom/separator",
+    "group/sysinfo",
+    "custom/separator",
+    "pulseaudio",
+    "custom/separator",
+    "clock"
+  ],
+  "group/sysinfo": {
+    "orientation": "horizontal",
+    "modules": [
+      "cpu",
+      "custom/separator",
+      "memory"
+    ]
+  },
+  "custom/oslogo": {
+      "format": "󰣇",
+      "tooltip": false
+  },
+  "niri/workspaces": {
+      "format": "{icon}",
+      "ignore-workspaces": ["^\\d+$"],
+      "format-icons": {
+        "b": "1::b",
+        "d": "2::d",
+        "m": "3::m",
+        "c": "4::c",
+        "v": "5::v",
+        "6":   "<span font='0'>5</span>",
+        "7":   "<span font='0'>5</span>",
+        "8":   "<span font='0'>5</span>"
+      }
+  },
+  "sway/workspaces": {
+      "format": "{icon}"
+  },
+  "niri/window": {
+    "max-length": 50
+  },
+  "sway/window": {
+    "max-length": 50
+  },
+  "tray": {
+    "spacing": 10,
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "cpu {usage}%",
+    "interval": 2,
+    "tooltip": false,
+    "on-click": "kitty --class btop btop",
+    "states": {
+      "critical": 90
+    }
+  },
+  "memory": {
+    "format": "ram {percentage}%",
+    "interval": 2,
+    "tooltip": false,
+    "on-click": "kitty --class btop btop",
+    "states": {
+      "critical": 80
+    }
+  },
+  "disk": {
+    "interval": 30,
+    "format": "disk {percentage_used}%",
+    "path": "/",
+    "tooltip": false,
+    "on-click": "kitty --class ncdu ncdu /"
+  },
+  "pulseaudio": {
+    "format": "vol {volume}%",
+    "format-muted": "󰝟",
+    "scroll-step": 1,
+    "tooltip": false,
+    "on-click": "kitty --class wiremix pulsemixer"
+  },
+  "clock": {
+    "format": "{:%a %d %b  %H:%M:%S}",
+    "interval": 1
+  }
+}
