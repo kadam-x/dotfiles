@@ -2,31 +2,18 @@ config.load_autoconfig(False)
 
 # ── Palette ──────────────────────────────────────────────────
 
-# bg      = "#000000"
-# bg_alt  = "#121212"
-# bg_sel  = "#222222"
-# border  = "#333333"
-# fg_muted = "#999999"
-# fg_main = "#c1c1c1"
-# fg_dim  = "#888888"
-# fg_sub  = "#444444"
-# accent  = "#9b8d7f"
-# accent2 = "#8c7f70"
-# teal    = "#5f8787"
-# err     = "#912222"
-
-bg = "#0D1116"
-bg_alt = "#141b22"
-bg_sel = "#232e3b"
-border = "#232e3b"
-fg_muted = "#b7bfce"
-fg_main = "#ffffff"
-fg_dim = "#b7bfce"
-fg_sub = "#232e3b"
-accent = "#987afb"
-accent2 = "#04d1f9"
-teal = "#37f499"
-err = "#f16c75"
+bg = "#000000"
+bg_alt = "#121212"
+bg_sel = "#222222"
+border = "#333333"
+fg_muted = "#999999"
+fg_main = "#c1c1c1"
+fg_dim = "#888888"
+fg_sub = "#444444"
+accent = "#9b8d7f"
+accent2 = "#8c7f70"
+teal = "#5f8787"
+err = "#912222"
 
 # ── General ──────────────────────────────────────────────────
 
@@ -168,9 +155,9 @@ c.colors.completion.scrollbar.bg = bg
 c.colors.statusbar.normal.bg = bg
 c.colors.statusbar.normal.fg = fg_muted
 c.colors.statusbar.insert.bg = bg
-c.colors.statusbar.insert.fg = teal
+c.colors.statusbar.insert.fg = accent
 c.colors.statusbar.passthrough.bg = bg
-c.colors.statusbar.passthrough.fg = accent2
+c.colors.statusbar.passthrough.fg = teal
 c.colors.statusbar.command.bg = bg
 c.colors.statusbar.command.fg = fg_main
 c.colors.statusbar.caret.bg = bg
@@ -262,4 +249,5 @@ config.bind("_", "zoom-out")
 
 config.bind(",gh", "cmd-set-text :open -t !gh  ")
 config.bind(",yt", "cmd-set-text :open -t !yt  ")
+config.bind(",rd", "cmd-set-text :open -t !r  ")
 config.bind(",mp", "cmd-set-text :open -t !maps  ")
