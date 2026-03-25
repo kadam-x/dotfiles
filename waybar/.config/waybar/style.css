@@ -7,16 +7,18 @@
   padding: 0;
 }
 
+/* Global Bar Styles */
 window#waybar {
-  background: rgba(13, 17, 22, 0.85);
-  color: #b7bfce;
+  background: rgba(0, 0, 0, 0.7);
+  color: #727169;
 }
 
 tooltip {
-  background-color: #0d1116;
-  border: 1px solid #987afb;
+  background-color: #181616;
+  border: 1px solid #9c8d7e;
 }
 
+/* Module Layout */
 #clock,
 #tray,
 #cpu,
@@ -25,61 +27,59 @@ tooltip {
 #network,
 #disk,
 #pulseaudio {
-  color: #b7bfce;
+  color: #727169;
   margin: 2px 2px 0px 0px;
   padding: 2px 8px;
 }
 
 #custom-oslogo {
-  color: #987afb;
+  color: #727169;
+  /* background-color: #727169; */
   margin-right: 6px;
   margin-left: 2px;
   padding-left: 2px;
   padding-right: 10px;
 }
 
+/* Workspace States */
 #workspaces button.empty {
-  color: #232e3b;
+  color: #54546d;
   background-color: transparent;
-  opacity: 0.4;
 }
 
 #workspaces button {
-  color: #b7bfce;
+  color: #727169;
   background-color: transparent;
-  opacity: 0.4;
   margin-right: 2px;
   margin-left: 2px;
-  padding-right: 4px;
-  padding-left: 4px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 
 #workspaces button.focused {
-  background-color: transparent;
-  color: #0d1116;
-  opacity: 1;
+  background-color: #727169;
+  color: #181616;
   margin-right: 2px;
   margin-left: 2px;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 
 #workspaces button.visible {
   background-color: transparent;
-  color: #b7bfce;
+  color: white;
+  opacity: 0.8;
   margin-right: 2px;
   margin-left: 2px;
-  padding-right: 4px;
-  padding-left: 4px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 
 #workspaces button.urgent {
-  background-color: #f16c75;
-  color: #0d1116;
-  opacity: 1;
-  font-weight: bold;
+  background-color: #c34043;
+  color: #181616;
   margin-right: 2px;
   margin-left: 2px;
-  padding-right: 4px;
-  padding-left: 4px;
+  padding-right: 2px;
+  padding-left: 2px;
 }

@@ -1,6 +1,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
+vim.opt.showmode = false
 -- disable command history
 vim.keymap.set("n", "q:", "<nop>")
 vim.keymap.set("n", "q/", "<nop>")

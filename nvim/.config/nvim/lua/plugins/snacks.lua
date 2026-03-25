@@ -63,6 +63,13 @@ return {
 			desc = "Find Buffers",
 		},
 		{
+			"<leader>td",
+			function()
+				Snacks.picker.grep({ search = "TODO|PERF|HACK|NOTE|FIX|FIXME", live = false })
+			end,
+			desc = "TODO list ALL",
+		},
+		{
 			"<leader>ff",
 			function()
 				Snacks.picker.files()
