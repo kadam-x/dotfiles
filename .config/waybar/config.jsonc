@@ -8,12 +8,10 @@
   },
   "modules-left": [
    "custom/oslogo",
-   "niri/workspaces",
-   "sway/workspaces"
+   "custom/niri-workspaces"
   ],
   "modules-center": [
-    "niri/window",
-    "sway/window"
+    "niri/window"
   ],
   "modules-right": [
     "tray",
@@ -37,19 +35,16 @@
       "format": "󰣇",
       "tooltip": false
   },
+  "custom/niri-workspaces": {
+      "exec": "/home/adam/.config/waybar/niri-workspaces.sh",
+      "format": "{}",
+      "interval": 0.1,
+      "return-type": "json",
+      "signal": 8
+  },
   "niri/workspaces": {
       "format": "{icon}",
-      "ignore-workspaces": ["^\\d+$"],
-      "format-icons": {
-        "b": "1::b",
-        "d": "2::d",
-        "m": "3::m",
-        "c": "4::c",
-        "v": "5::v",
-        "6":   "<span font='0'>5</span>",
-        "7":   "<span font='0'>5</span>",
-        "8":   "<span font='0'>5</span>"
-      }
+      "ignore-workspaces": ["^\\d+$"]
   },
   "sway/workspaces": {
       "format": "{icon}"

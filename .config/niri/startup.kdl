@@ -1,0 +1,11 @@
+// Programs to spawn at startup
+spawn-at-startup "sh" "-c" "waybar"  
+spawn-at-startup "qbittorrent"
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "sh" "-c" "swaybg -m fill -i ~/Pictures/wallpapers/monochrome-wave.jpg"
+hotkey-overlay {
+    skip-at-startup
+}
+
+// Use spawn-sh-at-startup for shell commands
+// spawn-sh-at-startup "command with pipes | and stuff"

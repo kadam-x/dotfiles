@@ -7,7 +7,6 @@
   padding: 0;
 }
 
-/* Global Bar Styles */
 window#waybar {
   background: rgba(0, 0, 0, 0.7);
   color: #727169;
@@ -18,7 +17,6 @@ tooltip {
   border: 1px solid #9c8d7e;
 }
 
-/* Module Layout */
 #clock,
 #tray,
 #cpu,
@@ -34,52 +32,13 @@ tooltip {
 
 #custom-oslogo {
   color: #727169;
-  /* background-color: #727169; */
   margin-right: 6px;
   margin-left: 2px;
   padding-left: 2px;
   padding-right: 10px;
 }
 
-/* Workspace States */
-#workspaces button.empty {
-  color: #54546d;
-  background-color: transparent;
-}
-
-#workspaces button {
+#custom-niri-workspaces {
   color: #727169;
-  background-color: transparent;
-  margin-right: 2px;
-  margin-left: 2px;
-  padding-right: 2px;
-  padding-left: 2px;
-}
-
-#workspaces button.focused {
-  background-color: #727169;
-  color: #181616;
-  margin-right: 2px;
-  margin-left: 2px;
-  padding-right: 2px;
-  padding-left: 2px;
-}
-
-#workspaces button.visible {
-  background-color: transparent;
-  color: white;
-  opacity: 0.8;
-  margin-right: 2px;
-  margin-left: 2px;
-  padding-right: 2px;
-  padding-left: 2px;
-}
-
-#workspaces button.urgent {
-  background-color: #c34043;
-  color: #181616;
-  margin-right: 2px;
-  margin-left: 2px;
-  padding-right: 2px;
-  padding-left: 2px;
+  padding-right: 6px;
 }
