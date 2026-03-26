@@ -8,7 +8,8 @@
   },
   "modules-left": [
    "custom/oslogo",
-   "custom/niri-workspaces"
+   "custom/niri-workspaces",
+   "sway/workspaces"
   ],
   "modules-center": [
     "niri/window"
@@ -38,13 +39,8 @@
   "custom/niri-workspaces": {
       "exec": "/home/adam/.config/waybar/niri-workspaces.sh",
       "format": "{}",
-      "interval": 0.1,
       "return-type": "json",
       "signal": 8
-  },
-  "niri/workspaces": {
-      "format": "{icon}",
-      "ignore-workspaces": ["^\\d+$"]
   },
   "sway/workspaces": {
       "format": "{icon}"
