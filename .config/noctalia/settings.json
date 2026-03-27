@@ -5,7 +5,7 @@
         "clipboardWatchTextCommand": "wl-paste --type text --watch cliphist store",
         "clipboardWrapText": true,
         "customLaunchPrefix": "",
-        "customLaunchPrefixEnabled": false,
+        "customLaunchPrefixEnabled": true,
         "density": "default",
         "enableClipPreview": true,
         "enableClipboardChips": true,
@@ -43,7 +43,7 @@
         "autoHideDelay": 500,
         "autoShowDelay": 150,
         "backgroundOpacity": 0.72,
-        "barType": "floating",
+        "barType": "simple",
         "capsuleColorKey": "none",
         "capsuleOpacity": 0,
         "contentPadding": 5,
@@ -251,7 +251,7 @@
                 "id": "weather-card"
             },
             {
-                "enabled": false,
+                "enabled": true,
                 "id": "media-sysmon-card"
             }
         ],
@@ -289,7 +289,7 @@
         }
     },
     "desktopWidgets": {
-        "enabled": false,
+        "enabled": true,
         "gridSnap": false,
         "gridSnapScale": false,
         "monitorWidgets": [
@@ -333,7 +333,7 @@
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
         "animationDisabled": false,
-        "animationSpeed": 1.5,
+        "animationSpeed": 2,
         "autoStartAuth": false,
         "avatarImage": "/home/adam/.face",
         "boxRadiusRatio": 1,

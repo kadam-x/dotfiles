@@ -9,7 +9,7 @@ binds {
     Mod+0 { spawn-sh "~/.config/niri/rename-workspace.sh"; }
     Mod+A { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Mod+Alt+L { spawn "swaylock"; }
-    Mod+B { spawn "librewolf"; }
+    Mod+B { spawn "qutebrowser"; }
     Mod+E { spawn "kitty" "--class" "yazi" "-e" "yazi"; }
     Mod+Escape { spawn-sh "~/.config/rofi/scripts/power-menu-niri.sh"; }
     Mod+N { spawn-sh "~/.config/rofi/scripts/note"; }
