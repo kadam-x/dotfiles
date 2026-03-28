@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+choice=$(printf "btop\nncdu\npulsemixer" | rofi -dmenu -p "" -theme-str 'window {width: 10%;} listview {lines: 3; columns: 1;} inputbar {enabled: false;}')
+
+case "$choice" in
+  "btop")       kitty --class btop btop & ;;
+  "ncdu")       kitty --class ncdu ncdu / & ;;
+  "pulsemixer") kitty --class wiremix pulsemixer & ;;
+esac
