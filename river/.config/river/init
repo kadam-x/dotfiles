@@ -5,6 +5,12 @@ riverctl default-attach-mode bottom
 riverctl csd-preference server
 riverctl rule-add -app-id '*' ssd
 
+riverctl rule-add -app-id "wiremix" float
+riverctl rule-add -app-id "yazi" float
+riverctl rule-add -app-id "pulsemixer" float
+riverctl rule-add -app-id "org.qbittorrent.qBittorrent" float
+riverctl rule-add -app-id "swayimg" float
+
 riverctl border-width 3
 riverctl border-color-focused 0x6e94b2ff
 riverctl border-color-unfocused 0x1c1c24ff
@@ -13,8 +19,8 @@ BEMENU_OPTS='-l 10 --fn "monospace 16" --nb "#1c1c24" --fb "#1c1c24" --tb "#1c1c
 
 riverctl map normal Super Return spawn foot
 riverctl map normal Super A spawn "bemenu-run $BEMENU_OPTS"
-riverctl map normal Super E spawn "kitty --app-id yazi -e yazi"
-riverctl map normal Super V spawn "kitty --app-id pulsemixer -e pulsemixer"
+riverctl map normal Super E spawn "foot --app-id yazi --window-size-pixels 1400x1200 -e yazi"
+riverctl map normal Super V spawn "foot --app-id pulsemixer --window-size-pixels 800x600 -e pulsemixer"
 riverctl map normal Super U spawn "hyprpicker -a"
 riverctl map normal Super+Shift S spawn "sh -c 'grim -g \"\$(slurp)\" - | tee ~/Pictures/Screenshots/screenshot_\$(date +%Y%m%d_%H%M%S).png | wl-copy'"
 
@@ -43,6 +49,12 @@ riverctl map normal Super D send-layout-cmd rivertile "main-count -1"
 riverctl map normal Super F toggle-float
 riverctl map normal Super Space zoom
 
+riverctl map normal Control Escape spawn "wlr-randr --output DP-1 --toggle"
+riverctl map normal Control+Alt Escape exit
+
+riverctl map-pointer normal Super BTN_LEFT move-view
+riverctl map-pointer normal Super BTN_RIGHT resize-view
+
 for i in $(seq 1 9); do
     tags=$((1 << (i - 1)))
     riverctl map normal Super $i set-focused-tags $tags
@@ -55,9 +67,6 @@ riverctl keyboard-layout us,hu -options grp:win_space_toggle
 riverctl input '*' tap enabled
 riverctl input '*' accel-profile flat
 
-riverctl rule-add -app-id yazi float
-riverctl rule-add -app-id pulsemixer float
-
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river &
 systemctl --user start pipewire pipewire-pulse xdg-desktop-portal xdg-desktop-portal-wlr &
 waybar &
@@ -66,7 +75,8 @@ awww-daemon &
 awww img ~/Pictures/wallpapers/lucy.jpg &
 wl-paste --type text --watch cliphist store &
 wl-paste --type image --watch cliphist store &
-qbittorrent --no-splash &
+
+sh -c 'sleep 2 && QT_QPA_PLATFORM=wayland qbittorrent -geometry 800x450 & sleep 1 && wlrctl window focus app_id:org.qbittorrent.qBittorrent minimize' &
 
 riverctl default-layout rivertile
-exec rivertile -view-padding 1 -outer-padding 0 -main-ratio 0.55 -main-location left
+exec rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.55 -main-location left
