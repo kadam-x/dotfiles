@@ -1,6 +1,6 @@
 * {
     font-family: JetBrainsMono Nerd Font;
-    font-size: 18px;
+    font-size: 20px;
     min-height: 0;
     border: none;
     border-radius: 0;
@@ -16,10 +16,15 @@ window#waybar {
 }
 
 #tags button {
-    padding: 0 8px;
+    padding: 0 10px;
+    background: #1c1c24;
+    color: #444444;
+    border-radius: 0;
+}
+
+#tags button.occupied {
     background: #1c1c24;
     color: #bbbbbb;
-    border-radius: 0;
 }
 
 #tags button.focused {
@@ -37,15 +42,15 @@ window#waybar {
     color: #bbbbbb;
 }
 
-#window {
-    padding: 0 10px;
-    color: #bbbbbb;
-}
-
 #clock,
 #tray {
     padding: 0 10px;
     color: #bbbbbb;
+}
+
+tooltip label {
+    color: #bbbbbb;
+    padding: 6px;
 }
 
 #tray > .passive {
