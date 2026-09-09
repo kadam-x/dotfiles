@@ -1,0 +1,30 @@
+{
+    "layer": "top",
+    "position": "top",
+    "reload_style_on_change": true,
+    "height": 32,
+    "spacing": 4,
+
+    "modules-left": ["river/tags"],
+    "modules-center": [],
+    "modules-right": ["tray", "clock"],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true
+    },
+    "river/tags": {
+    "num-tags": 9,
+    "tag-labels": ["1","2","3","4","5","6","7","8","9"]
+    },
+
+    "clock": {
+        "format": "{:%H:%M   %a %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}

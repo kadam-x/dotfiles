@@ -1,0 +1,72 @@
+#!/bin/sh
+
+riverctl default-attach-mode bottom
+
+riverctl csd-preference server
+riverctl rule-add -app-id '*' ssd
+
+riverctl border-width 3
+riverctl border-color-focused 0x6e94b2ff
+riverctl border-color-unfocused 0x1c1c24ff
+
+BEMENU_OPTS='-l 10 --fn "monospace 16" --nb "#1c1c24" --fb "#1c1c24" --tb "#1c1c24" --ab "#1c1c24" --hb "#6e94b2" --sb "#6e94b2" --scb "#6e94b2" --tf "#6e94b2" --hf "#252530"'
+
+riverctl map normal Super Return spawn foot
+riverctl map normal Super A spawn "bemenu-run $BEMENU_OPTS"
+riverctl map normal Super E spawn "kitty --app-id yazi -e yazi"
+riverctl map normal Super V spawn "kitty --app-id pulsemixer -e pulsemixer"
+riverctl map normal Super U spawn "hyprpicker -a"
+riverctl map normal Super+Shift S spawn "sh -c 'grim -g \"\$(slurp)\" - | tee ~/Pictures/Screenshots/screenshot_\$(date +%Y%m%d_%H%M%S).png | wl-copy'"
+
+riverctl map normal Super Period spawn "env BEMENU_OPTS='$BEMENU_OPTS' bash ~/.local/bin/scripts/emoji-picker.sh"
+riverctl map normal Super W spawn "env BEMENU_OPTS='$BEMENU_OPTS' bash ~/.local/bin/scripts/wallpaper-picker.sh"
+
+riverctl map normal None XF86AudioRaiseVolume spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+riverctl map normal None XF86AudioLowerVolume spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+riverctl map normal None XF86AudioMute spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+riverctl map normal Super Equal spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+riverctl map normal Super Minus spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+
+riverctl map normal Super Q close
+riverctl map normal Super+Shift Q exit
+
+riverctl map normal Super J focus-view next
+riverctl map normal Super K focus-view previous
+riverctl map normal Super+Shift J swap next
+riverctl map normal Super+Shift K swap previous
+
+riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map normal Super I send-layout-cmd rivertile "main-count +1"
+riverctl map normal Super D send-layout-cmd rivertile "main-count -1"
+
+riverctl map normal Super F toggle-float
+riverctl map normal Super Space zoom
+
+for i in $(seq 1 9); do
+    tags=$((1 << (i - 1)))
+    riverctl map normal Super $i set-focused-tags $tags
+    riverctl map normal Super+Shift $i set-view-tags $tags
+    riverctl map normal Super+Control $i spawn "riverctl set-view-tags $tags && riverctl set-focused-tags $tags"
+done
+
+riverctl set-repeat 35 200
+riverctl keyboard-layout us,hu -options grp:win_space_toggle
+riverctl input '*' tap enabled
+riverctl input '*' accel-profile flat
+
+riverctl rule-add -app-id yazi float
+riverctl rule-add -app-id pulsemixer float
+
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river &
+systemctl --user start pipewire pipewire-pulse xdg-desktop-portal xdg-desktop-portal-wlr &
+waybar &
+mako --default-timeout 5000 &
+awww-daemon &
+awww img ~/Pictures/wallpapers/lucy.jpg &
+wl-paste --type text --watch cliphist store &
+wl-paste --type image --watch cliphist store &
+qbittorrent --no-splash &
+
+riverctl default-layout rivertile
+exec rivertile -view-padding 1 -outer-padding 0 -main-ratio 0.55 -main-location left

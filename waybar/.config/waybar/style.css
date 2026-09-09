@@ -1,0 +1,64 @@
+* {
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 18px;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-shadow: none;
+    transition: none;
+    animation: none;
+}
+
+window#waybar {
+    background: #1c1c24;
+    color: #bbbbbb;
+}
+
+#tags button {
+    padding: 0 8px;
+    background: #1c1c24;
+    color: #bbbbbb;
+    border-radius: 0;
+}
+
+#tags button.focused {
+    background: #6e94b2;
+    color: #ffffff;
+}
+
+#tags button.urgent {
+    background: #770000;
+    color: #ffffff;
+}
+
+#tags button:hover {
+    background: #252530;
+    color: #bbbbbb;
+}
+
+#window {
+    padding: 0 10px;
+    color: #bbbbbb;
+}
+
+#clock,
+#tray {
+    padding: 0 10px;
+    color: #bbbbbb;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: none;
+}
+
+#tray > .needs-attention {
+    background: #6e94b2;
+    -gtk-icon-effect: none;
+}
+
+#tray menu {
+    background: #1c1c24;
+    color: #bbbbbb;
+    border-radius: 0;
+}
